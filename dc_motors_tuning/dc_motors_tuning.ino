@@ -9,16 +9,17 @@ void setup() {
 
 void loop() {
   //T
-  smart_timer(5000);
+  smart_timer(time_loop);
 
   //S
   float cur_encL = encL, cur_encR = encR;
-  float uL = -110, uR = -110;
+  float uL = speed_controllerL(1100, cur_encL);
+        //uR = speed_controllerR(200, cur_encR);
 
   //P
 
 
   //A
-  motors(uL, uR);
-  Serial.println(String(cur_encL) + " " + String(cur_encR));
+  motors(uL, 0);
+  //Serial.println(String(cur_encL) + " " + String(cur_encR));
 }

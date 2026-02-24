@@ -1,11 +1,11 @@
-volatile int16_t encL = 0, encR = 0;
+volatile float encL = 0, encR = 0;
 
 void encoderL() {
-  if(digitalRead(14)) encL--; else encL++;
+  if (digitalRead(14)) encL--; else encL++;
 }
 
 void encoderR() {
-  if(digitalRead(15)) encR++; else encR--;
+  if (digitalRead(15)) encR++; else encR--;
 }
 
 void _initEnc() {
@@ -20,14 +20,14 @@ void _initMotors() {
   pinMode(7, OUTPUT);
 }
 
-void motors(int mL, int mR) {
-  digitalWrite(4, mL < 0);
+void motors(float mL, float mR) {
+  digitalWrite(7, mL < 0);
   mL = abs(mL);
   if (mL > 255) mL = 255;
-  analogWrite(5, mL);
+  analogWrite(6, mL);
 
-  digitalWrite(7, mR < 0);
+  digitalWrite(4, mR < 0);
   mR = abs(mR);
   if (mR > 255) mR = 255;
-  analogWrite(6, mR);
+  analogWrite(5, mR);
 }
