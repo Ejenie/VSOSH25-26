@@ -14,7 +14,7 @@ void loop() {
   updateIMU(dataIMUreal);
   updateDelta();
   Serial.println(String(dataIMUreal[0]) + " " + String(dataIMU) + " " + String(deltaIMU));
-  if (!digitalRead(13)){
+  if (!digitalRead(13)) {
     zeroIMU();
   }
 }
