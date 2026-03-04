@@ -65,7 +65,19 @@ double dataIMU = 0;
 double deltaIMU = 0;
 
 double delta(double n, double m) {
-  
+  if (m > 180) {
+    if (abs(m) > abs(n)) {
+      return -1 * (abs(m) - abs(n) - 360);
+    } else {
+      return (abs(m) - abs(n));
+    }
+  } else {
+    if (abs(m) > abs(n)) {
+      return -1 * (abs(m) - abs(n));
+    } else {
+      return (abs(m) - abs(n));
+    }
+  }
 }
 
 void updateDelta() {
