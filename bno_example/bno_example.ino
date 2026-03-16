@@ -30,7 +30,8 @@ void readBNOData(double *data) {
 
   // Регистр 0x1A: Эйлеровы углы (H,R,P). 1 LSB = 1/16 Degree
   readRegs(0x1A, buffer, 6);
-  for (int i = 0; i < 3; i++) data[i] = (int16_t)((buffer[i * 2 + 1] << 8) | buffer[i * 2]) / 16.0;
+  for (int i = 0; i < 3; i++)
+    data[i] = (int16_t)((buffer[i * 2 + 1] << 8) | buffer[i * 2]) / 16.0;
 }
 
 
@@ -61,7 +62,8 @@ void setup() {
   readRegs(BNO_CHIP_ID_REG, &id, 1);
   if (id != 0xA0) {
     Serial.println("Ошибка: BNO055 не найден!");
-    while (1);
+    while (1)
+      ;
   }
 
   // Настройка датчика
