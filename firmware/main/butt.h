@@ -6,9 +6,28 @@ void _initButt() {
   pinMode(12, INPUT_PULLUP);
 }
 
-void waitWhite() {
-  while (digitalRead(12))
-    ;
+bool waitWhite() {
+  while (digitalRead(12)) {
+    return false;
+  }
   while (!digitalRead(12))
     ;
+  return true;
+}
+
+void reset() {
+  if (waitWhite()) {
+    texst("reboot", 3, 15);
+    delay(2000);
+    asm volatile("jmp 0x00");
+  }
+}
+
+bool waitGreen() {
+  while (digitalRead(10)) {
+    return false;
+  }
+  while (!digitalRead(10))
+    ;
+  return true;
 }
